@@ -12,13 +12,18 @@ const Layout = ({ children }) => (
         site {
           siteMetadata {
             title
+            description
+            author
           }
         }
       }
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header
+          siteTitle={data.site.siteMetadata.title}
+          siteDescription={data.site.siteMetadata.description}
+        />
         <div
           style={{
             margin: '0 auto',
@@ -27,7 +32,10 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
-          <main>{children}</main>
+          <main>
+            {data.site.siteMetadata.author}
+            {children}
+          </main>
           <footer>
             ©
             {' '}
