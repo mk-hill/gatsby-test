@@ -1,8 +1,8 @@
 ---
-path: "/"
+path: "/second-post"
 alien: false
 title: "frontmatter title for post 2"
-date: "2019-02-23"
+date: "2019-02-25"
 ---
 
 # Post 2 title
