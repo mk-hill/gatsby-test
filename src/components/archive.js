@@ -9,7 +9,7 @@ const POST_ARCHIVE_QUERY = graphql`
           frontmatter {
             title
             alien
-            path
+            slug
             date(formatString: "MMMM Do, YYYY")
           }
         }
@@ -28,11 +28,11 @@ const Archive = () => (
           <h3>Archive</h3>
           {posts.map(({ node }) => {
             const {
-              title, alien, path, date,
+              title, alien, slug, date,
             } = node.frontmatter;
             return (
-              <li key={path}>
-                <Link to={`/posts${path}`}>{title}</Link>
+              <li key={slug}>
+                <Link to={`/posts${slug}`}>{title}</Link>
                 <p>{alien ? 'is an alien' : 'not alien'}</p>
                 <p>{date}</p>
               </li>

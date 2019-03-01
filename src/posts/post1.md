@@ -1,5 +1,5 @@
 ---
-path: "/first-post"
+slug: "/first-post"
 alien: true
 title: "frontmatter title"
 date: "2019-02-23"

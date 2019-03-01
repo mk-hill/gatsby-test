@@ -18,7 +18,7 @@ exports.createPages = ({ graphql, actions }) => {
           edges {
             node {
               frontmatter {
-                path
+                slug
               }
             }
           }
@@ -27,10 +27,10 @@ exports.createPages = ({ graphql, actions }) => {
     `).then((results) => {
       results.data.allMarkdownRemark.edges.forEach(({ node }) => {
         createPage({
-          path: node.frontmatter.path,
+          path: `/posts${node.frontmatter.slug}`,
           component: path.resolve('./src/components/postLayout.js'),
           context: {
-            path: node.frontmatter.path,
+            lookup: node.frontmatter.slug,
           },
         });
       });
