@@ -2,24 +2,24 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from './layout';
 
-class postLayout {
-  render() {
-    return (
-      <Layout>
-        <h1>Post layout</h1>
-      </Layout>
-    );
-  }
-}
+const postLayout = (props) => {
+  const { markdownRemark } = props.data;
+  console.log(props);
+  return (
+    <Layout>
+      <h1>{markdownRemark.frontmatter.title}</h1>
+      <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+    </Layout>
+  );
+};
 
 export const query = graphql`
-  query PostDetails {
-    markdownRemark(frontmatter: { slug: { eq: "/third-post" } }) {
+  query PostDetails($slug: String!) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
         date
-        slug
       }
     }
   }

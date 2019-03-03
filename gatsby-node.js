@@ -30,7 +30,7 @@ exports.createPages = ({ graphql, actions }) => {
           path: `/posts${node.frontmatter.slug}`,
           component: path.resolve('./src/components/postLayout.js'),
           context: {
-            lookup: node.frontmatter.slug,
+            slug: node.frontmatter.slug,
           },
         });
       });
